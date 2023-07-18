@@ -14,12 +14,23 @@ except ImportError:
 FILENAME = get_data_file_path("messages.log")
 # >>>> DO NOT MODIFY CODE ABOVE <<<<
 
-
 def time_between_shutdowns(logfile):
     """
     Your docstring here.  Replace the pass keyword below with your implementation.
     """
-    pass
+    shutdowns = get_shutdown_events(logfile)
+
+    shut_1 = shutdowns[0]
+
+    shut_2 = shutdowns[-1]
+
+    shut1_date = logstamp_to_datetime(shut_1.split()[1])
+
+    shut2_date = logstamp_to_datetime(shut_2.split()[1])
+
+    dfr = shut2_date - shut1_date
+
+    return dfr
 
 
 # >>>> The code below will call your function and print the results
